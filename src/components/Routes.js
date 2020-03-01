@@ -9,10 +9,15 @@ export default class Routes extends React.Component<{}> {
     render() {
         return(
             <Router>
-                <Stack key="root" hideNavBar={true}>
-                    <Scene key="login" component={Login} title="Login" initial={true} />
-                    <Scene key="signup" component={Signup} title="Signup" />
-                </Stack>
+                <Scene>
+                    <Scene key="root" hideNavBar={true} initial={this.props.isLoggedIn}>
+                        <Scene key="login" component={Login} title="Login" initial={true} />
+                        <Scene key="signup" component={Signup} title="Signup" />
+                    </Scene>
+                    <Scene key="app" hideNavBar={true} initial={!this.props.isLoggedIn}>
+                        <Scene key="signup" component={Signup} title="Signup" initial={true} />
+                    </Scene>
+                </Scene>
             </Router>
         )
     }

@@ -21,12 +21,18 @@ const styles = StyleSheet.create({
 class Main extends React.Component<{}> {
 
     render() {
+        const {authData: { isLoggedIn }} = this.props;
+
         return (
             <View style={styles.container}>
-                <Routes />
+                <Routes isLoggedIn={isLoggedIn} />
             </View>
         );
     }
 }
 
-export default connect(null, null)(Main)
+mapStateToProps = state => ({
+    authData: state.authReducer.authData
+})
+
+export default connect(mapStateToProps, null)(Main)
