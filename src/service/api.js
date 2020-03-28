@@ -1,4 +1,4 @@
-const BASE_URL = 'http://ff6682c9.ngrok.io'
+const BASE_URL = 'https://f2f58c1b.ngrok.io'
 
 export const api = async (url, method, body = null, headers = {}) => {
 

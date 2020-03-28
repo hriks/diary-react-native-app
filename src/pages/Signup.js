@@ -112,7 +112,7 @@ class Signup extends React.Component<{}> {
         const { handleSubmit, createUser} = this.props;
         return (
             <View style={styles.container}>
-                {createUser.isLoading && <Loader />}
+                {(createUser && createUser.isLoading) && <Loader />}
                 <Logo />
                 <Field
                     name="username"
@@ -159,7 +159,7 @@ const validate = (values) => {
         errors.email = "Email is required"
     }
     if(!values.password) {
-        errors.password = "Name is required"
+        errors.password = "password is required"
     }
     return errors;
 };

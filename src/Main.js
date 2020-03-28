@@ -23,6 +23,8 @@ class Main extends React.Component<{}> {
     render() {
         const {authData: { isLoggedIn }} = this.props;
 
+        console.log(isLoggedIn)
+
         return (
             <View style={styles.container}>
                 <Routes isLoggedIn={isLoggedIn} />
