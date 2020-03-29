@@ -3,8 +3,12 @@ import {
     StyleSheet,
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    Image
 } from 'react-native';
+
+import { Container, Header, Left, Body, Icon, Button } from 'native-base';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 import {connect} from 'react-redux'
 import { compose } from 'redux'
@@ -28,8 +32,6 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: Colors.backgroundColor,
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
     },
     signupTextContainer: {
         flexGrow: 1,
@@ -65,8 +67,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingBottom: 8,
         paddingTop: 2
+    },
+    header: {
+        backgroundColor: Colors.black,
+        fontSize: 14,
+        paddingHorizontal: 16,
+        paddingTop: 10
     }
 })
+
 
 
 class Dashboard extends React.Component<{}> {
@@ -81,28 +90,27 @@ class Dashboard extends React.Component<{}> {
     render() {
         const {getUser: {userDetails}} = this.props;
         return (
-            <View style={styles.container}>
-                 <Text style={styles.textStyle}>
-                    This is a profile page for {userDetails ? userDetails.name : ""}
-                </Text>
-            </View>
+            <Container>
+                <Header style={styles.header}>
+                    <Left>
+                        <Button transparent>
+                            <Icon name="menu" />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Image
+                            source={require('../images/logo_text.png')}
+                        />
+                    </Body>
+                </Header>
+                <Grid style={styles.container}>
+                    <Col style={{ backgroundColor: Colors.baseFontColor, height: 200 }}></Col>
+                    <Col style={{ backgroundColor: '#00CE9F', height: 200 }}></Col>
+                </Grid>
+            </Container>
         )
     }
 }
-
-const validate = (values) => {
-    const errors = {};
-    if(!values.username) {
-        errors.username = "Username is required"
-    }
-    if(!values.email) {
-        errors.email = "Email is required"
-    }
-    if(!values.password) {
-        errors.password = "password is required"
-    }
-    return errors;
-};
 
 mapStateToProps = (state) => ({
     getUser: state.userReducer.getUser
@@ -113,9 +121,5 @@ mapDispatchToProps = (dispatch) => ({
 });
 
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
-    reduxForm({
-        form: "register",
-        validate
-    })
+    connect(mapStateToProps, mapDispatchToProps)
 )(Dashboard);

@@ -20,5 +20,6 @@ export default {
   	backgroundColor: '#dcf1ff',
   	baseFontColor: '#7ba4be',
   	defaultButtonColor: '#487c9b',
-  	inputBoxColor: '#bbdaed'
+  	inputBoxColor: '#bbdaed',
+    header: '#635DB7'
 };

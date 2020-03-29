@@ -11,6 +11,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "native-base": "^2.13.12",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-button": "^2.4.0",
@@ -20,6 +21,7 @@
     "react-native-reanimated": "^1.2.0",
     "react-native-router-flux": "4.2.0-beta.1",
     "react-native-screens": "^2.0.0-alpha.3",
+    "react-native-vector-icons": "^6.6.0",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-form": "^8.3.0",
